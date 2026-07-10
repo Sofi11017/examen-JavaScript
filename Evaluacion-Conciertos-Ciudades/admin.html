@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciertos Conectados - Panel de Administración</title>
+    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"><i class="fa-solid fa-user-gear"></i></div>
+                <h3>Admin Panel</h3>
+                <p>admin@mail.com</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="menu-item active" data-target="inicio">
+                        <a href="#inicio"><i class="fa-solid fa-chart-pie"></i> Inicio</a>
+                    </li>
+                    <li class="menu-item" data-target="categorias">
+                        <a href="#categorias"><i class="fa-solid fa-tags"></i> Categorías</a>
+                    </li>
+                    <li class="menu-item" data-target="eventos">
+                        <a href="#eventos"><i class="fa-solid fa-calendar-days"></i> Eventos</a>
+                    </li>
+                    <li class="menu-item" data-target="ventas">
+                        <a href="#ventas"><i class="fa-solid fa-cart-shopping"></i> Ventas</a>
+                    </li>
+                    <li class="menu-item" data-target="ciudades">
+                        <a href="#ciudades"><i class="fa-solid fa-city"></i> Ciudades</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="btn-reset-datos" id="btn-reset-datos"><i class="fa-solid fa-rotate"></i> Reiniciar
+                Datos</button>
+            <button class="btn-reset-datos" id="btn-logout" style="margin-top:0.5rem; background:#a30000;"><i
+                    class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="page-title">Dashboard General</h1>
+                <div class="header-user">
+                    <span>Bienvenido, <strong>Administrador</strong></span>
+                </div>
+            </header>
+
+            <div id="section-inicio" class="dashboard-section active-section">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background:#e8f4fd; color:#3f72af;"><i
+                                class="fa-solid fa-dollar-sign"></i></div>
+                        <div class="metric-info">
+                            <h3>Recaudación Total</h3>
+                            <p id="metric-recaudacion">$0</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background:#eafaf1; color:#2ed573;"><i
+                                class="fa-solid fa-ticket"></i></div>
+                        <div class="metric-info">
+                            <h3>Entradas Vendidas</h3>
+                            <p id="metric-entradas">0</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background:#fef5e7; color:#ff9f43;"><i
+                                class="fa-solid fa-calendar-check"></i></div>
+                        <div class="metric-info">
+                            <h3>Total Eventos</h3>
+                            <p id="metric-eventos">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-container-grid">
+                    <div class="chart-card card">
+                        <h4>Progreso de Meta de Ventas</h4>
+                        <div class="meta-progress-wrapper">
+                            <div class="meta-valores">
+                                <span id="meta-actual">$0</span>
+                                <span id="meta-objetivo">Meta: $0</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div id="meta-progress-bar" class="progress-bar" style="width: 0%"></div>
+                            </div>
+                            <p id="meta-porcentaje-texto"
+                                style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;">0% de la meta
+                                alcanzada</p>
+                        </div>
+                        <div class="form-group"
+                            style="margin-top:1.5rem; border-top:1px solid var(--border-color); padding-top:1rem;">
+                            <label for="input-meta-ventas">Actualizar Meta Objetivo ($)</label>
+                            <div style="display:flex; gap:0.5rem; margin-top:0.3rem;">
+                                <input type="number" id="input-meta-ventas" placeholder="Ej: 5000000" style="flex:1;">
+                                <button id="btn-guardar-meta" class="btn-action"
+                                    style="padding:0 1rem;">Definir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card card">
+                        <h4>Distribución por Categorías</h4>
+                        <div id="grid-categorias-resumen" class="grid-categorias-mini"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-categorias" class="dashboard-section visual-hidden">
+                <div class="section-header-actions">
+                    <h3>Gestión de Categorías</h3>
+                    <button id="btn-nueva-categoria" class="btn-action"><i class="fa-solid fa-plus"></i> Nueva
+                        Categoría</button>
+                </div>
+                <div class="table-responsive card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-categorias"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="section-eventos" class="dashboard-section visual-hidden">
+                <div class="eventos-layout-grid">
+                    <div class="card p-4">
+                        <h4 id="form-eventos-titulo"><i class="fa-solid fa-calendar-plus"></i> Registrar Nuevo Evento
+                        </h4>
+                        <form id="form-eventos" class="admin-form" style="margin-top:1rem;">
+                            <input type="hidden" id="ev-id">
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="ev-codigo">Código Interno</label>
+                                    <input type="text" id="ev-codigo" required placeholder="Ej: ROCK-2026">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ev-nombre">Nombre del Evento</label>
+                                    <input type="text" id="ev-nombre" required placeholder="Ej: Rock al Parque">
+                                </div>
+                            </div>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="ev-categoria">Categoría</label>
+                                    <select id="ev-categoria" required>
+                                        <option value="">Seleccione...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ev-precio">Precio Boleta ($)</label>
+                                    <input type="number" id="ev-precio" required placeholder="Ej: 45000">
+                                </div>
+                            </div>
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label for="ev-fecha">Fecha</label>
+                                    <input type="date" id="ev-fecha" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ev-hora">Hora</label>
+                                    <input type="time" id="ev-hora" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ev-ciudad">Ciudad</label>
+                                    <select id="ev-ciudad" required>
+                                        <option value="">Seleccione...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ev-imagen">Imagen del Evento</label>
+                                <input type="file" id="ev-imagen" accept="image/*">
+                                <input type="hidden" id="ev-imagen-base64">
+                                <div class="image-preview-container">
+                                    <img id="ev-imagen-preview" src="" alt="Vista previa"
+                                        style="display: none; max-width: 100%; height: auto; margin-top: 0.5rem; border-radius: 6px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ev-descripcion">Descripción del Evento</label>
+                                <textarea id="ev-descripcion" rows="3" required
+                                    placeholder="Detalles del concierto, restricciones, etc."></textarea>
+                            </div>
+                            <div style="display:flex; gap:0.5rem;">
+                                <button type="button" id="btn-cancelar-edicion-ev" class="btn-action"
+                                    style="background:var(--text-muted); display:none; flex:1;">Cancelar</button>
+                                <button type="submit" id="btn-guardar-evento" class="btn-action" style="flex:2;">Guardar
+                                    Evento</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="section-header-actions" style="margin-bottom:1rem;">
+                            <h3>Eventos Cargados</h3>
+                        </div>
+                        <div id="container-eventos-lista" class="eventos-lista-vertical-scroll"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-ventas" class="dashboard-section visual-hidden">
+                <div class="section-header-actions">
+                    <h3>Registro de Historial de Ventas</h3>
+                </div>
+                <div class="table-responsive card">
+                    <table id="table-ventas-completa">
+                        <thead>
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Fecha</th>
+                                <th>Ciudad</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="section-sugerencias" class="dashboard-section visual-hidden">
+                <div class="section-header-actions">
+                    <h3><i class="fa-solid fa-inbox"></i> Buz&oacute;n de Sugerencias</h3>
+                    <button id="btn-limpiar-sugerencias" class="btn-action" style="background:#a30000;">
+                        <i class="fa-solid fa-trash"></i> Limpiar todo
+                    </button>
+                </div>
+                <div id="container-sugerencias" class="sugerencias-grid"></div>
+            </div>
+
+            <!-- SECCIÓN: GESTIONAR CIUDADES -->
+            <div id="section-ciudades" class="dashboard-section visual-hidden">
+                <div class="section-header-actions">
+                    <h3><i class="fa-solid fa-city"></i> Gestió&oacute;n de Ciudades</h3>
+                    <button id="btn-nueva-ciudad" class="btn-action"><i class="fa-solid fa-plus"></i> Nueva
+                        Ciudad</button>
+                </div>
+                <div class="table-responsive card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre de la Ciudad</th>
+                                <th style="width: 150px; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-ciudades"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+
+    <app-modal id="modal-categoria" titulo="Agregar Categoría">
+        <form id="form-categoria" class="admin-form">
+            <input type="hidden" id="cat-id">
+            <div class="form-group">
+                <label for="cat-nombre">Nombre</label>
+                <input type="text" id="cat-nombre" required placeholder="Ej: Música">
+            </div>
+            <div class="form-group">
+                <label for="cat-descripcion">Descripción</label>
+                <textarea id="cat-descripcion" rows="3" required
+                    placeholder="Breve descripción de la categoría"></textarea>
+            </div>
+            <button type="submit" class="btn-action btn-full">Guardar Categoría</button>
+        </form>
+    </app-modal>
+
+    <app-modal id="modal-detalle-venta" titulo="Detalle del Pedido">
+        <div id="detalle-venta-contenido"></div>
+    </app-modal>
+
+    <app-modal id="modal-ciudad" titulo="Agregar Ciudad">
+        <form id="form-ciudad" class="admin-form">
+            <input type="hidden" id="ciu-id">
+            <div class="form-group">
+                <label for="ciu-nombre">Nombre de la Ciudad</label>
+                <input type="text" id="ciu-nombre" required placeholder="Ej: Medellín">
+                <span id="ciu-error" style="display:none; color:#ff4d4d; font-size:0.85rem; margin-top:0.25rem;">Esta
+                    ciudad ya existe en la lista.</span>
+            </div>
+            <button type="submit" class="btn-action btn-full">Guardar Ciudad</button>
+        </form>
+    </app-modal>
+
+    <script src="JS/store.js"></script>
+    <script src="JS/components.js"></script>
+    <script src="JS/admin.js"></script>
+    <script src="JS/ciudades.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciertos Conectados</title>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="brand"><i class="fa-solid fa-music"></i> Conciertos Conectados</div>
+        <button id="btn-carrito" class="btn-carrito-header">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="carrito-contador" class="carrito-contador">0</span>
+        </button>
+        <a href="admin.html" id="btn-login" class="btn-login-header">
+            <i class="fa-solid fa-user-gear"></i> Iniciar Sesion
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>Vive los mejores eventos de tu ciudad</h1>
+        <p>Compra tus entradas fácil, rápido y sin filas.</p>
+        <button id="btn-abrir-sugerencia" class="btn-sugerencia">
+            <i class="fa-solid fa-envelope-open-text"></i> Enviar sugerencia
+        </button>
+    </section>
+
+    <section class="filtros-bar">
+        <div class="campo-busqueda">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="buscador" placeholder="Buscar evento por nombre...">
+        </div>
+        <select id="filtro-ciudad">
+            <option value="">Todas las ciudades</option>
+        </select>
+        <select id="filtro-categoria">
+            <option value="">Todas las categorías</option>
+        </select>
+    </section>
+
+    <main class="contenedor-eventos">
+        <div id="grid-eventos" class="grid-eventos"></div>
+        <p id="sin-resultados" class="sin-resultados" style="display:none;">No se encontraron eventos con esos filtros.</p>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Conciertos Conectados. Todos los derechos reservados.</p>
+    </footer>
+
+    <app-modal id="modal-carrito" titulo="Tu Carrito">
+        <div id="carrito-lista"></div>
+        <div class="carrito-total">
+            <span>Total</span>
+            <strong id="carrito-total-valor">$0</strong>
+        </div>
+        <button id="btn-comprar" class="btn-comprar btn-full">Comprar</button>
+    </app-modal>
+
+    <app-modal id="modal-checkout" titulo="Finalizar Compra">
+        <form id="form-checkout" class="admin-form">
+            <div class="form-group">
+                <label for="chk-identificacion">Número de identificación</label>
+                <input type="text" id="chk-identificacion" required placeholder="Ej: 1020304050">
+            </div>
+            <div class="form-group">
+                <label for="chk-nombre">Nombre completo</label>
+                <input type="text" id="chk-nombre" required placeholder="Ej: Laura Gómez">
+            </div>
+            <div class="form-group">
+                <label for="chk-direccion">Dirección</label>
+                <input type="text" id="chk-direccion" required placeholder="Ej: Calle 45 #12-30">
+            </div>
+            <div class="form-group">
+                <label for="chk-telefono">Teléfono</label>
+                <input type="tel" id="chk-telefono" required placeholder="Ej: 3001234567">
+            </div>
+            <div class="form-group">
+                <label for="chk-email">Email</label>
+                <input type="email" id="chk-email" required placeholder="Ej: correo@mail.com">
+            </div>
+            <button type="submit" class="btn-comprar btn-full">Confirmar Compra</button>
+        </form>
+    </app-modal>
+    
+    <script src="JS/store.js"></script>
+    <script src="JS/components.js"></script>
+    <script src="JS/carrito-compartido.js"></script>
+    <script src="JS/cliente.js"></script>
+</body>
+</html>

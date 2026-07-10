@@ -1,0 +1,116 @@
+{
+  "categorias": [
+    { "id": "cat-1", "nombre": "Música", "descripcion": "Conciertos y festivales musicales de todos los géneros." },
+    { "id": "cat-2", "nombre": "Cultura", "descripcion": "Exposiciones, teatro y actividades culturales." },
+    { "id": "cat-3", "nombre": "Deportes", "descripcion": "Eventos deportivos y competencias en vivo." },
+    { "id": "cat-4", "nombre": "Entretenimiento", "descripcion": "Comedia, shows y espectáculos familiares." }
+  ],
+  "eventos": [
+    {
+      "id": "ev-1",
+      "codigo": "RICARDO-QUEVEDO-CUCUTA",
+      "nombre": "Ricardo Quevedo - Caer con Estilo",
+      "categoria": "Entretenimiento",
+      "precio": 122000,
+      "fecha": "17 de Julio",
+      "hora": "7:30 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento1.jpeg",
+      "descripcion": "Show de Stand-Up Comedy Organiza Like Entretenimiento. Info: 304 200 9545.",
+      "pulep": "GHD641"
+    },
+    {
+      "id": "ev-2",
+      "codigo": "GUERRA-MINITECAS-CUCUTA",
+      "nombre": "Guerra de Minitecas 2.0 - Choque de Titanes",
+      "categoria": "Entretenimiento",
+      "precio": 60500,
+      "fecha": "Sábado 11 de Julio",
+      "hora": "8:00 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento2.jpeg",
+      "descripcion": "Macro Efectus Vs Tridimension. Puntos de venta: Nuestro Ticket, Hotel Ibis, Planeta Store.",
+      "pulep": "HEI695"
+    },
+    {
+      "id": "ev-3",
+      "codigo": "LISS-PEREIRA-CUCUTA",
+      "nombre": "Liss Pereira - Latina Mente Volumen 2",
+      "categoria": "Entretenimiento",
+      "precio": 93500,
+      "fecha": "Sábado 7 de Noviembre",
+      "hora": "8:00 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento3.jpeg",
+      "descripcion": "Show de comedia stand-up en vivo en el Teatro Zulima.",
+      "pulep": "SSD351"
+    },
+    {
+      "id": "ev-4",
+      "codigo": "ALEX-ZURDO-CUCUTA",
+      "nombre": "Alex Zurdo en Concierto",
+      "categoria": "Música",
+      "precio": 66000,
+      "fecha": "5 Sept 2026",
+      "hora": "7:00 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento4.jpeg",
+      "descripcion": "Invitados: Madiel Lara y El Sielvo Lio. Apoya Faro Loop y Sayco. Teléfono: 6019171010.",
+      "pulep": "VRU423"
+    },
+    {
+      "id": "ev-5",
+      "codigo": "BAILE-DEL-AÑO",
+      "nombre": "Baile del Año 2026",
+      "categoria": "Música",
+      "precio": 66000,
+      "fecha": "28 Noviembre 2026",
+      "hora": "7:00 PM",
+      "ciudad": "Bucaramanga",
+      "imagen": "/img/img_eventos_principales/evento5.jpeg",
+      "descripcion": "Billo's Caracas Boys VS Los Melódicos de Renato Capriles. Fenómenos Sabaneros.",
+      "pulep": "DBY711"
+    },
+    {
+      "id": "ev-6",
+      "codigo": "PLANCHA-SINFONICA-CUCUTA",
+      "nombre": "Plancha Sinfónica - Invitados Especiales",
+      "categoria": "Cultura",
+      "precio": 49000,
+      "fecha": "Viernes 14 Agosto",
+      "hora": "8:00 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento6.jpeg",
+      "descripcion": "Produce Vargas Music en el Teatro Zulima. Inf: 311 256 8583.",
+      "pulep": "TRT436"
+    },
+    {
+      "id": "ev-7",
+      "codigo": "VILMAPALMA-CUCUTA",
+      "nombre": "Vilma Palma e Vampiros - 35 Años de Música",
+      "categoria": "Música",
+      "precio": 94200,
+      "fecha": "24 Octubre",
+      "hora": "7:00 PM",
+      "ciudad": "Cúcuta",
+      "imagen": "/img/img_eventos_principales/evento7.jpeg",
+      "descripcion": "Espectacular concierto conmemorativo de sus 35 años de trayectoria musical.",
+      "pulep": "YOX192"
+    },
+    {
+      "id": "ev-8",
+      "codigo": "BTS-ARIRANG-BOG",
+      "nombre": "BTS World Tour | Arirang",
+      "categoria": "Música",
+      "precio": 300000,
+      "fecha": "2026-10-02 / 2026-10-03",
+      "hora": "7:30 PM",
+      "ciudad": "Bogotá",
+      "imagen": "/img/img_eventos_principales/evento8.jpeg",
+      "descripcion": "BTS World Tour Arirang en vivo desde el Estadio El Campín de Bogotá (Vie y Sáb).",
+      "pulep": "JUS369"
+    }
+  ],
+  "ventas": [],
+  "metaVentas": 5000000
+}
